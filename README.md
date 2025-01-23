@@ -1,1 +1,6 @@
-This repository holds the contents for all labs regarding MXET 300 for Group 24
+#MXET300_lab
+
+Spring 2025, Section 504, Team 24
+
+Team Members: 
+Samuel Haggerty, Sean Martinez
