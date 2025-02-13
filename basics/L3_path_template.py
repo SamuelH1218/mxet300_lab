@@ -19,6 +19,7 @@ forward_velocity = 0.0      # forward velocity (x dot) in m/s of SCUTTLE. NOTE t
 # the list elements within each list are in order as follows: chassis forward velocity (m/s), chassis angular velocity (rad/s), and motion duration (sec)
 # enter the chassis forward velocity (x dot) in m/s, chassis angular velocity (theta dot) in rad/s, and motion duration in sec for each motion to create the path
 motions = [
+    [0, 0, 0],
     [0.25, 0.0, 2],            # Motion 1
     [0.0, 0.7854, 2],            # Motion 2
     [0.25, 0.0, 2],            # Motion 3
@@ -28,6 +29,7 @@ motions = [
     [0.25, 0.0, 2],            # Motion 7
     [0.0, -0.7854, 2],            # Motion 8
     [0.25, 0.0, 2],            # Motion 9
+    [0, 0, 0]
 ]
 
 # iterate through and perform each open loop motion and then wait the specified duration.
@@ -36,3 +38,8 @@ for  count, motion in enumerate(motions):
     wheel_speeds = ik.getPdTargets(motion[:2])                  # take the forward speed(m/s) and turning speed(rad/s) and use inverse kinematics to deterimine wheel speeds
     sc.driveOpenLoop(wheel_speeds)                              # take the calculated wheel speeds and use them to run the motors
     sleep(motion[2])                                            # wait the motion duration
+    fwd = motion[0]
+    ang = motion[1]
+    log.tmpFile(fwd,"fwdvelo.txt")
+    log.tmpFile(ang,"angvelo.txt")
+
